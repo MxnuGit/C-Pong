@@ -1,0 +1,9 @@
+// Compiled files for windows
+*.exe
+
+// Compiled files for Linux (?)
+*.o
+*.out
+
+cpong
+
