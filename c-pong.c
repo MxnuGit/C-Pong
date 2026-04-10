@@ -3,7 +3,7 @@
 int main() {
     
     // Window variables
-    const int windowWidth = 900;
+    const int windowWidth = 1200;
     const int windowHeight = 600;
     const char* title = "C-Pong";
 
@@ -14,6 +14,7 @@ int main() {
 
     // Game Objects
     const Vector2 maceSize = { 20, 150};
+    const int maceSpeed = 2.0f;
     const int marginY = 20;
 
     Vector2 leftMacePosition = { 15, windowHeight / 2 - 70};
@@ -24,18 +25,17 @@ int main() {
     
     
     const int ballRadius = 15;
-    const float ballSpeed = 2.0f;
+    const float ballSpeed = 3.0f;
     Vector2 ballPosition = { windowWidth / 2, windowHeight / 2};
     const Color ballColor = BLACK;
 
     // Gameloop
     while(!WindowShouldClose()) {
         // Input
-        if(IsKeyDown(KEY_UP) && leftMacePosition.y > marginY) leftMacePosition.y -= ballSpeed;
-        if(IsKeyDown(KEY_DOWN) && leftMacePosition.y < windowHeight - maceSize.y - marginY) leftMacePosition.y += ballSpeed;
+        if(IsKeyDown(KEY_UP) && leftMacePosition.y > marginY) leftMacePosition.y -= maceSpeed;
+        if(IsKeyDown(KEY_DOWN) && leftMacePosition.y + maceSize.y + marginY < windowHeight) leftMacePosition.y += maceSpeed;
 
         // Update
-        
 
         // Draw
         BeginDrawing();
