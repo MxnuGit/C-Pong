@@ -10,13 +10,15 @@ int main() {
     // Window constructor
     InitWindow(windowWidth, windowHeight, title);
 
+    SetTargetFPS(60);
+
     // Game Objects
     const Vector2 maceSize = { 20, 150};
 
-    const Vector2 leftMacePosition = { 15, windowHeight / 2 - 70};
+    Vector2 leftMacePosition = { 15, windowHeight / 2 - 70};
     const Color leftMaceColor = BLUE;
 
-    const Vector2 rightMacePosition = { windowWidth - 35, windowHeight / 2 - 70};
+    Vector2 rightMacePosition = { windowWidth - 35, windowHeight / 2 - 70};
     const Color rightMaceColor = RED;
 
     // Gameloop
@@ -25,7 +27,7 @@ int main() {
 
 
         // Update
-
+        
 
         // Draw
         BeginDrawing();
