@@ -14,7 +14,7 @@ int main() {
 
     // Game Objects
     const Vector2 maceSize = { 20, 150};
-    const int maceSpeed = 2.0f;
+    const float maceSpeed = 2.0f;
     const int marginY = 20;
 
     Vector2 leftMacePosition = { 15, windowHeight / 2 - 70};
@@ -27,7 +27,7 @@ int main() {
     const int ballRadius = 15;
     const float ballSpeed = 3.0f;
     Vector2 ballPosition = { windowWidth / 2, windowHeight / 2};
-    const Color ballColor = BLACK;
+    const Color ballColor = WHITE;
 
     // Gameloop
     while(!WindowShouldClose()) {
@@ -40,7 +40,7 @@ int main() {
         // Draw
         BeginDrawing();
 
-        ClearBackground(WHITE);
+        ClearBackground(BLACK);
 
         DrawRectangleV(leftMacePosition, maceSize, leftMaceColor);
         DrawRectangleV(rightMacePosition, maceSize, rightMaceColor);
