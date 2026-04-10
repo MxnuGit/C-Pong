@@ -3,12 +3,21 @@
 int main() {
     
     // Window variables
-    const int width = 900;
-    const int height = 600;
+    const int windowWidth = 900;
+    const int windowHeight = 600;
     const char* title = "C-Pong";
 
     // Window constructor
-    InitWindow(width, height, title);
+    InitWindow(windowWidth, windowHeight, title);
+
+    // Game Objects
+    const Vector2 maceSize = { 20, 150};
+
+    const Vector2 leftMacePosition = { 15, windowHeight / 2 - 70};
+    const Color leftMaceColor = BLUE;
+
+    const Vector2 rightMacePosition = { windowWidth - 35, windowHeight / 2 - 70};
+    const Color rightMaceColor = RED;
 
     // Gameloop
     while(!WindowShouldClose()) {
@@ -22,6 +31,9 @@ int main() {
         BeginDrawing();
 
         ClearBackground(WHITE);
+
+        DrawRectangleV(leftMacePosition, maceSize, leftMaceColor);
+        DrawRectangleV(rightMacePosition, maceSize, rightMaceColor);
 
         EndDrawing();
     }
