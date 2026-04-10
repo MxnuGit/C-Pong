@@ -21,6 +21,11 @@ int main() {
     Vector2 rightMacePosition = { windowWidth - 35, windowHeight / 2 - 70};
     const Color rightMaceColor = RED;
 
+
+    const int ballRadius = 15;
+    Vector2 ballPosition = { windowWidth / 2, windowHeight / 2};
+    const Color ballColor = BLACK;
+
     // Gameloop
     while(!WindowShouldClose()) {
         // Input
@@ -36,6 +41,7 @@ int main() {
 
         DrawRectangleV(leftMacePosition, maceSize, leftMaceColor);
         DrawRectangleV(rightMacePosition, maceSize, rightMaceColor);
+        DrawCircleV(ballPosition, ballRadius, ballColor);
 
         EndDrawing();
     }
