@@ -28,6 +28,8 @@ int main() {
     const float ballSpeed = 3.0f;
     Vector2 ballPosition = { windowWidth / 2, windowHeight / 2};
     const Color ballColor = WHITE;
+    int ballDirectionX = 1;
+    int ballDirectionY = 1;
 
     // Gameloop
     while(!WindowShouldClose()) {
@@ -36,6 +38,17 @@ int main() {
         if(IsKeyDown(KEY_DOWN) && leftMacePosition.y + maceSize.y + marginY < windowHeight) leftMacePosition.y += maceSpeed;
 
         // Update
+        ballPosition.x += (ballSpeed * ballDirectionX); 
+        ballPosition.y += (ballSpeed * ballDirectionY);
+
+        if(ballPosition.x - ballRadius < 0 || ballPosition.x + ballRadius > windowWidth) {
+            ballDirectionX *= -1;
+        }
+
+        if(ballPosition.y - ballRadius < 0 || ballPosition.y + ballRadius > windowHeight) {
+            ballDirectionY *= -1;
+        }
+
 
         // Draw
         BeginDrawing();
