@@ -13,7 +13,7 @@ int main() {
     SetTargetFPS(60);
 
     // Game Objects
-    const Vector2 maceSize = { 20, 150};
+    const Vector2 maceSize = { 10, 150};
     const float maceSpeed = 2.0f;
     const int marginY = 20;
 
@@ -25,7 +25,7 @@ int main() {
     
     
     const int ballRadius = 15;
-    const float ballSpeed = 3.0f;
+    const float ballSpeed = 8.0f;
     Vector2 ballPosition = { windowWidth / 2, windowHeight / 2};
     const Color ballColor = WHITE;
     int ballDirectionX = 1;
@@ -34,10 +34,19 @@ int main() {
     // Gameloop
     while(!WindowShouldClose()) {
         // Input
-        if(IsKeyDown(KEY_UP) && leftMacePosition.y > marginY) leftMacePosition.y -= maceSpeed;
-        if(IsKeyDown(KEY_DOWN) && leftMacePosition.y + maceSize.y + marginY < windowHeight) leftMacePosition.y += maceSpeed;
+        if(IsKeyDown(KEY_W) && leftMacePosition.y > marginY) leftMacePosition.y -= maceSpeed;
+        if(IsKeyDown(KEY_S) && leftMacePosition.y + maceSize.y + marginY < windowHeight) leftMacePosition.y += maceSpeed;
+
+        if(IsKeyDown(KEY_UP) && rightMacePosition.y > marginY) rightMacePosition.y -= maceSpeed;
+        if(IsKeyDown(KEY_DOWN) && rightMacePosition.y + maceSize.y + marginY < windowHeight) rightMacePosition.y += maceSpeed;
 
         // Update
+        if(ballPosition.x >= rightMacePosition.x || ballPosition.x <= leftMacePosition.x) {
+            ballPosition.x = windowWidth / 2;
+            ballPosition.y = windowHeight / 2;
+        }
+
+
         ballPosition.x += (ballSpeed * ballDirectionX); 
         ballPosition.y += (ballSpeed * ballDirectionY);
 
@@ -47,6 +56,23 @@ int main() {
 
         if(ballPosition.y - ballRadius < 0 || ballPosition.y + ballRadius > windowHeight) {
             ballDirectionY *= -1;
+        }
+
+        // Mace collision
+        if(
+            ballPosition.x + ballRadius >= rightMacePosition.x &&
+            ballPosition.y + ballRadius <= rightMacePosition.y + maceSize.y &&
+            ballPosition.y - ballRadius >= rightMacePosition.y
+        ) {
+            ballDirectionX *= -1;
+        }
+
+        if(
+            ballPosition.x - ballRadius <= leftMacePosition.x + maceSize.x &&
+            ballPosition.y + ballRadius <= leftMacePosition.y + maceSize.y &&
+            ballPosition.y - ballRadius >= leftMacePosition.y
+        ) {
+            ballDirectionX *= -1;
         }
 
 
