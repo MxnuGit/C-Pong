@@ -13,8 +13,8 @@ int main() {
     SetTargetFPS(60);
 
     // Game Objects
-    const Vector2 maceSize = { 10, 150};
-    const float maceSpeed = 2.0f;
+    const Vector2 maceSize = { 5, 120};
+    const float maceSpeed = 3.5f;
     const int marginY = 20;
 
     Vector2 leftMacePosition = { 15, windowHeight / 2 - 70};
@@ -25,13 +25,13 @@ int main() {
     
     
     const int ballRadius = 15;
-    const float ballSpeed = 8.0f;
+    const float ballSpeed = 10.0f;
     Vector2 ballPosition = { windowWidth / 2, windowHeight / 2};
     const Color ballColor = WHITE;
     int ballDirectionX = 1;
     int ballDirectionY = 1;
 
-
+    // score
     int leftScore = 0;
     int rightScore = 0;
 
@@ -101,7 +101,6 @@ int main() {
             ballDirectionX *= -1;
         }
 
-
         /*
         * DRAW
         */ 
@@ -117,7 +116,7 @@ int main() {
 
         // Draw right score
         DrawText(TextFormat("%03i", rightScore), windowWidth - 100, 40, 40, RED);
-        
+
         DrawRectangleV(leftMacePosition, maceSize, leftMaceColor);
         DrawRectangleV(rightMacePosition, maceSize, rightMaceColor);
         DrawCircleV(ballPosition, ballRadius, ballColor);
